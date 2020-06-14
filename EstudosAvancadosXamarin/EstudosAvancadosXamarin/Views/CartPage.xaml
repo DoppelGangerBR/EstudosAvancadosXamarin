@@ -7,9 +7,20 @@
              x:Class="EstudosAvancadosXamarin.Views.CartPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding CartItens}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Name, StringFormat='Produto: {0}'}"/>
+                                <Label Text="{Binding Price, StringFormat='Preço: {0} R$'}"/>
+                                <Label Text="{Binding Quantity, StringFormat='Quantidade: {0}'}"/>
+                                <Label Text="{Binding TotalItemPrice, StringFormat='Valor Total: {0} R$'}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

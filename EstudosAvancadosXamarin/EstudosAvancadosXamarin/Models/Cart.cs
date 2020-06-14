@@ -6,6 +6,6 @@ namespace EstudosAvancadosXamarin.Models
     {
         public int Id { get; set; }
         public decimal TotalValue { get; set; }
-        public List<Product> Products { get; set; }
+        public List<CartItem> Products { get; set; }
     }
 }
