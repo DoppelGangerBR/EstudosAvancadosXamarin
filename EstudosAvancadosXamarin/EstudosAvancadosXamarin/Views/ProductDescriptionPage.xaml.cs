@@ -1,0 +1,14 @@
+﻿using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace EstudosAvancadosXamarin.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProductDescriptionPage : ContentPage
+    {
+        public ProductDescriptionPage()
+        {
+            InitializeComponent();
+        }
+    }
+}
