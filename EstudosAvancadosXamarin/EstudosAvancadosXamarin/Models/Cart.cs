@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace EstudosAvancadosXamarin.Models
 {
     class Cart
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public decimal TotalValue { get; set; }
-        public List<CartItem> Products { get; set; }
+        public ObservableCollection<CartItem> Products { get; set; }
     }
 }

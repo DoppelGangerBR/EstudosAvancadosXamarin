@@ -4,12 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="EstudosAvancadosXamarin.Views.ProductDescriptionPage">
+             x:Class="EstudosAvancadosXamarin.Views.ProductDescriptionPage"
+             Visual="Material">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding Name, StringFormat='Product Name: {0}'}"/>
             <Label Text="{Binding Price, StringFormat='Price: {0} R$'}"/>
             <Label Text="{Binding Quantity, StringFormat='Quantity: {0}'}"/>
+            <Entry Text="{Binding ItemQuantity}" Placeholder="Quantidade" BackgroundColor="Transparent"/>
             <Button Text="Add to Cart" Command="{Binding AddProductToCartCommand}" VerticalOptions="EndAndExpand"/>
         </StackLayout>
     </ContentPage.Content>

@@ -11,7 +11,6 @@ namespace EstudosAvancadosXamarin.Views
         public CartPage()
         {
             InitializeComponent();
-            BindingContext = new CartViewModel();
         }
     }
 }
