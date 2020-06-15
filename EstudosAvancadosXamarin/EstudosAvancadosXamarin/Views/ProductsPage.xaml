@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="EstudosAvancadosXamarin.Views.ProductsPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding ItensInCart}" Order="Primary"/>
+        <ToolbarItem Text="{Binding ItensInCart}" Command="{Binding OpenCartCommand}" Order="Primary"/>
+        <ToolbarItem Text="Limpar Carrinho" Order="Secondary" Command="{Binding ClearCartCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>

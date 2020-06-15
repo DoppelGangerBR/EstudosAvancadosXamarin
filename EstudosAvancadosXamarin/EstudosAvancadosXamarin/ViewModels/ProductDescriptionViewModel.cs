@@ -53,6 +53,7 @@ namespace EstudosAvancadosXamarin.ViewModels
             cart.TotalValue = cart.Products.Sum(c => c.TotalItemPrice);
             await Application.Current.MainPage.DisplayAlert("Aviso", "Item adicionado ao carrinho com sucesso!", "OK");
             await Navigation.PopAsync();
+            MessagingCenter.Send(this, "updateCart");
         }
 
         private void CalculateTotalItemPrice()

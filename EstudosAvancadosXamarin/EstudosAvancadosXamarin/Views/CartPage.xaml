@@ -7,11 +7,13 @@
              x:Class="EstudosAvancadosXamarin.Views.CartPage">
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding CartItens}">
+            <Label Text="{Binding TotalValue, StringFormat='Valor Total: {0} R$'}"/>
+            <Label Text="{Binding ItemQuantity, StringFormat='Qtd. Produtos: {0}'}"/>
+            <ListView ItemsSource="{Binding CartItens}" HasUnevenRows="True" SeparatorVisibility="Default" SeparatorColor="Red">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
+                            <StackLayout Spacing="1" Padding="5">
                                 <Label Text="{Binding Name, StringFormat='Produto: {0}'}"/>
                                 <Label Text="{Binding Price, StringFormat='Preço: {0} R$'}"/>
                                 <Label Text="{Binding Quantity, StringFormat='Quantidade: {0}'}"/>

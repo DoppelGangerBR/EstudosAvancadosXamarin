@@ -14,14 +14,30 @@ namespace EstudosAvancadosXamarin.ViewModels
         Product selectedProduct;
         readonly List<Product> products;
         public Command OpenCartCommand { get; }
+        public Command ClearCartCommand { get; }
+
         private Cart cart;
         string itensInCart;
         public ProductsViewModel()
         {
             cart = new Cart();
+            itensInCart = "Carrinho Vazio";
             OpenCartCommand = new Command(async () => await OpenCart(), () => !IsBusy);
+            ClearCartCommand = new Command(async() => await ClearCart());
+            MessagingCenter.Subscribe<ProductDescriptionViewModel>(this, "updateCart", (arg) =>
+            {
+                if (cart == null || cart.Products == null || cart.Products.Count == 0)
+                {
+                    ItensInCart = "Carrinho vazio";
+                }
+                else
+                {
+                    ItensInCart = cart.Products.Count + " Produto(s)";
+                }
+                OnPropertyChanged(nameof(Cart));
+            });
         }
-
+        
         public List<Product> Products
         {
             get => Product.AvailableProducts();
@@ -29,7 +45,17 @@ namespace EstudosAvancadosXamarin.ViewModels
 
         async Task OpenCart()
         {
-            await Navigation.PushAsync<CartViewModel>(false);
+            await Navigation.PushAsync<CartViewModel>(false, Cart);
+        }
+        async Task ClearCart()
+        {
+            bool confirmation = await Application.Current.MainPage.DisplayAlert("Aviso", "Deseja realmente limpar o carrinho de compras?", "Sim", "Nãoi");
+            if (!confirmation)
+            {
+                return;
+            }
+            Cart = new Cart();
+            OnPropertyChanged(nameof(Cart));
         }
 
         async Task OpenProductDescription()
@@ -44,6 +70,14 @@ namespace EstudosAvancadosXamarin.ViewModels
             {
                 cart = value;
                 OnPropertyChanged();
+                if (cart == null || cart.Products == null || cart.Products.Count == 0)
+                {
+                    ItensInCart = "Carrinho vazio";
+                }
+                else
+                {
+                    ItensInCart = cart.Products.Count + " Produto(s)";
+                }
                 OnPropertyChanged(nameof(ItensInCart));
             }
         }
@@ -53,14 +87,7 @@ namespace EstudosAvancadosXamarin.ViewModels
             get => itensInCart;
             set
             {
-                if(cart != null && cart.Products != null)
-                {
-                    itensInCart = cart.Products.Count + " Produto(s)";
-                }
-                else
-                {
-                    itensInCart = "Carrinho vazio";
-                }
+                itensInCart = value;
                 OnPropertyChanged();
             }
         }
@@ -71,7 +98,8 @@ namespace EstudosAvancadosXamarin.ViewModels
             {
                 selectedProduct = value;
                 OnPropertyChanged();
-                OpenProductDescription();
+                if(selectedProduct != null)
+                    OpenProductDescription();
             }
         }
         private bool _busy = false;

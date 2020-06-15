@@ -8,11 +8,11 @@
              Visual="Material">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Name, StringFormat='Product Name: {0}'}"/>
-            <Label Text="{Binding Price, StringFormat='Price: {0} R$'}"/>
-            <Label Text="{Binding Quantity, StringFormat='Quantity: {0}'}"/>
+            <Label Text="{Binding Name, StringFormat='Produto.: {0}'}"/>
+            <Label Text="{Binding Price, StringFormat='Preço.: {0} R$'}"/>
+            <Label Text="{Binding Quantity, StringFormat='Estoque.: {0}'}"/>
             <Entry Text="{Binding ItemQuantity}" Placeholder="Quantidade" BackgroundColor="Transparent"/>
-            <Button Text="Add to Cart" Command="{Binding AddProductToCartCommand}" VerticalOptions="EndAndExpand"/>
+            <Button Text="Adicionar ao carrinho" Command="{Binding AddProductToCartCommand}" VerticalOptions="EndAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
