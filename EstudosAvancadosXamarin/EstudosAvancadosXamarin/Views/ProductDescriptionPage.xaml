@@ -5,14 +5,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="EstudosAvancadosXamarin.Views.ProductDescriptionPage"
-             Visual="Material">
+             Visual="Material"
+             Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding Name, StringFormat='Produto.: {0}'}"/>
             <Label Text="{Binding Price, StringFormat='Preço.: {0} R$'}"/>
-            <Label Text="{Binding Quantity, StringFormat='Estoque.: {0}'}"/>
+            <Label Text="{Binding Quantity, StringFormat='Estoque.: {0}'}" TextColor="Green">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Quantity}" Value="1">
+                        <Setter Property="TextColor" Value="Orange"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding Quantity}" Value="0">
+                        <Setter Property="TextColor" Value="Red"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
             <Entry Text="{Binding ItemQuantity}" Placeholder="Quantidade" BackgroundColor="Transparent"/>
-            <Button Text="Adicionar ao carrinho" Command="{Binding AddProductToCartCommand}" VerticalOptions="EndAndExpand"/>
+            <Button Text="Adicionar ao carrinho" Command="{Binding AddProductToCartCommand}" VerticalOptions="EndAndExpand" BackgroundColor="Green" CornerRadius="0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

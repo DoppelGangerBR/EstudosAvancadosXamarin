@@ -22,6 +22,7 @@ namespace EstudosAvancadosXamarin.ViewModels
             this.selectedProduct = selectedProduct;
             this.cart = cart;
             AddProductToCartCommand = new Command(async () => await AddProductToCart(), () => !IsBusy);
+            Title = "Descrição do produto";
         }
 
         private async Task AddProductToCart()

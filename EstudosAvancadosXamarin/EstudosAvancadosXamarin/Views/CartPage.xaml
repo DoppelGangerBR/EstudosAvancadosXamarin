@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="EstudosAvancadosXamarin.Views.CartPage">
+             x:Class="EstudosAvancadosXamarin.Views.CartPage"
+             Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding TotalValue, StringFormat='Valor Total: {0} R$'}"/>

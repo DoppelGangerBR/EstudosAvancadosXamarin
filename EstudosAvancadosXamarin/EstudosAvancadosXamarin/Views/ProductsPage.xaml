@@ -3,22 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:customEntry="clr-namespace:EstudosAvancadosXamarin.Customs"
              mc:Ignorable="d"
-             x:Class="EstudosAvancadosXamarin.Views.ProductsPage">
+             x:Class="EstudosAvancadosXamarin.Views.ProductsPage"
+             Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding ItensInCart}" Command="{Binding OpenCartCommand}" Order="Primary"/>
         <ToolbarItem Text="Limpar Carrinho" Order="Secondary" Command="{Binding ClearCartCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
+            <Label Text="Produtos Disponiveis" HorizontalTextAlignment="Center" FontSize="Medium"/>
+            <ListView ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" SeparatorColor="Black" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
+                            <StackLayout Spacing="1">
                                 <Label Text="{Binding Name}"/>
                                 <Label Text="{Binding Price}"/>
                             </StackLayout>
@@ -26,6 +26,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <customEntry:CustomEntry Text="{Binding ItensInCart}" MaxLenghtBeforeError="10"/>
+            <customEntry:CustomEntry Text="{Binding ItensInCart}" MaxLenghtBeforeError="25"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

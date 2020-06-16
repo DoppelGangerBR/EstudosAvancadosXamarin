@@ -24,6 +24,7 @@ namespace EstudosAvancadosXamarin.ViewModels
             itensInCart = "Carrinho Vazio";
             OpenCartCommand = new Command(async () => await OpenCart(), () => !IsBusy);
             ClearCartCommand = new Command(async() => await ClearCart());
+            Title = "Produtos Disponiveis";
             MessagingCenter.Subscribe<ProductDescriptionViewModel>(this, "updateCart", (arg) =>
             {
                 if (cart == null || cart.Products == null || cart.Products.Count == 0)
@@ -45,6 +46,10 @@ namespace EstudosAvancadosXamarin.ViewModels
 
         async Task OpenCart()
         {
+            if(cart == null || cart.Products == null)
+            {
+                return;
+            }
             await Navigation.PushAsync<CartViewModel>(false, Cart);
         }
         async Task ClearCart()

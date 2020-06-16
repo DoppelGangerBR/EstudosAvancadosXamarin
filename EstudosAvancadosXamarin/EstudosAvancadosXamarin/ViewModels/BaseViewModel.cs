@@ -7,6 +7,16 @@ namespace EstudosAvancadosXamarin.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        private string title;
+        public string Title
+        {
+            get => title;
+            set
+            {
+                title = value;
+                OnPropertyChanged();
+            }
+        }
         public virtual Task LoadAsync(object[] args) => Task.FromResult(true);
 
         public virtual Task LoadAsync() => Task.FromResult(true);

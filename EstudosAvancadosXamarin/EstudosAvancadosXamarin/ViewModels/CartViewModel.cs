@@ -10,6 +10,7 @@ namespace EstudosAvancadosXamarin.ViewModels
         public CartViewModel(Cart cart)
         {
             this.cart = cart;
+            Title = "Meu carrinho";
         }
 
         public int ItemQuantity
